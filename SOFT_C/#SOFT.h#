@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct GPK {
+  int value;
+  int pin;
+} gpio_elem;
+
+typedef struct STATUS {
+  gpio_elem ready;
+  gpio_elem clip;
+  gpio_elem otw1;
+  gpio_elem otw2;
+  gpio_elem sd;
+} status;
+
+typedef struct CONTROL {
+  struct gpio_elem reset;
+} CONTROL;
+
+typedef struct ampl {
+  struct status status;
+  struct control control;
+} AMPL;
+
+void init_ampl(struct ampl *AMPL, int ready_pin, int clip_pin, int otw1_pin, 
+	       int otw2_pin, int sd_pin, int reset_pin);
